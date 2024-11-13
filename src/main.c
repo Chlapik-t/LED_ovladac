@@ -3,6 +3,8 @@
 #include "main.h"
 #include "milis.h"
 
+#define BTN
+
 void init(void) {
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1); // Taktování MCU na 16MHz
 
@@ -37,14 +39,14 @@ int main(void) {
 
         // Nastavení výstupů pro LED
         if (led_out == 1) {
-            GPIO_WriteHigh(GPIOB, GPIO_PIN_2);
-            GPIO_WriteLow(GPIOB, GPIO_PIN_4);
+            GPIO_WriteHigh(LED1_PORT, LED1_PIN);
+            GPIO_WriteLow(LED3_PORT, LED3_PIN);
         } else if (led_out == 2) {
-            GPIO_WriteHigh(GPIOB, GPIO_PIN_3);
-            GPIO_WriteLow(GPIOB, GPIO_PIN_2);
-        } else {
-            GPIO_WriteHigh(GPIOB, GPIO_PIN_4);
-            GPIO_WriteLow(GPIOB, GPIO_PIN_3);
+            GPIO_WriteHigh(LED2_PORT, LED2_PIN);
+            GPIO_WriteLow(LED1_PORT, LED1_PIN);
+        } else if (led_out == 3) {
+            GPIO_WriteHigh(LED3_PORT, LED3_PIN);
+            GPIO_WriteLow(LED2_PORT,LED2_PIN);
         }
         lastBTNstate = BTNstate;
     }
