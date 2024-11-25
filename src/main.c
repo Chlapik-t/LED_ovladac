@@ -27,11 +27,9 @@ int main(void) {
     while (1) {
         BTNstate = GPIO_ReadInputPin(BTN_PORT, BTN_PIN);
 
-
         if (lastBTNstate == 0 && BTNstate == 1) {
             led_out += 1;
         }
-
 
         if (led_out > 3) {
             led_out = 1;
